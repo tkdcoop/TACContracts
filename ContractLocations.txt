@@ -1,0 +1,37 @@
+Deployment
+
+1. Create new metamask account. 
+
+2. Deploy in the following order, updating addresses of previously deployed contracts. 
+
+TACAdvisorLockup - https://rinkeby.etherscan.io/address/0xE6c9DD9a4AF5611c24A1c4032d9f960652D765e6#code
+TACLockup - https://rinkeby.etherscan.io/address/0xbE6492206f460136921308c80D390c3D1D3f1716#code
+Fantasy - https://rinkeby.etherscan.io/address/0x5d3fB447F5EC766b80082Be5f7305801dcab0b37#code
+TACVoting = https://rinkeby.etherscan.io/address/0xe8c5d6dbb8f7a813939855bf1ead7a11770e4efd#code
+CoopData = https://rinkeby.etherscan.io/address/0x4E81fc0Eeef51c516773Eb6b6Ec05c452B0c8F5f#code
+TAC - https://rinkeby.etherscan.io/address/0xaba8ace37f301e7a3a3fad44682c8ec8dc2bd18a#code (run initContract)
+
+start the first election. 
+
+3. Change TAC address in : 
+
+TACAdvisorLockup (run initContract)
+
+4. For mainnet, change variables - 
+lockup
+distribute
+voting
+TAC
+
+Line 202 of AdvisorLockup - Change order to prevent reentrancy. 
+
+
+
+
+
+
+
+
+
+
+
