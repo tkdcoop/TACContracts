@@ -83,7 +83,7 @@ contract CoopData is AccessControl {
     uint64 public numProposedMatches = 0;
     bool public requireMembership = false;
 
-    address public TACContract = 0x3cEbD7271FFB084377b3103500eD6b3C6cb26D63;
+    address public TACContract = 0xABa8ace37f301E7a3A3FaD44682C8Ec8DC2BD18A;
     
     //The amount of Hwangs required to spar a match. 
     uint public matchCost = 10000000000000000000;
@@ -330,7 +330,16 @@ contract CoopData is AccessControl {
         newMatch.time = uint64 (block.timestamp);
        
         numMatches ++;
+        allMatches.push(newMatch);
+        
+           
         ITAC TAC = ITAC(TACContract);
+        
+         //Add the match to the athletes and ref
+        allUsers[_winner].matches.push(newMatch.id);
+        allUsers[_loser].matches.push(newMatch.id);
+        allUsers[_referee].matches.push(newMatch.id);
+        
 
         if ((TAC.balanceOf(_loser) >= matchCost) && (TAC.balanceOf(_winner) >= matchCost)) {
             //Transfer the 10 TAC from each athlete. 
