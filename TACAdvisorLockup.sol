@@ -183,6 +183,15 @@ contract TACAdvisorLockup is AccessControl  {
         return periods;
 
     }
+    
+    function getBalance(address beneficiary) public view returns (uint256) {
+        for (uint i = 0; i < Beneficiaries.length; i ++) {
+            if (Beneficiaries[i].beneficaryAddress == beneficiary) {
+                return Beneficiaries[i].balance;
+            }
+        }
+        return 0;
+    }
 
     //Any of the beneficiaries can call this function to claim the TAC they are entitled to.
     function claimTAC() public {
@@ -192,13 +201,6 @@ contract TACAdvisorLockup is AccessControl  {
         for (uint i = 0; i<Beneficiaries.length; i++) {
           if (Beneficiaries[i].beneficaryAddress == msg.sender) {
               
-            // Transfer all balance at the end
-            if (getFullLockupPeriods() >= 5) {
-                Beneficiaries[i].balance = 0;
-                TAC.transfer(msg.sender, Beneficiaries[i].balance);
-                return;
-            }
-            
             uint256 entitled = getFullLockupPeriods() * Beneficiaries[i].periodAllocation;
             uint256 totalAllocation = Beneficiaries[i].periodAllocation * 5;
             
