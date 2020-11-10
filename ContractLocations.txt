@@ -1,5 +1,5 @@
-TACAdvisorLockup - https://rinkeby.etherscan.io/address/0xE6c9DD9a4AF5611c24A1c4032d9f960652D765e6#code
-TACLockup - https://rinkeby.etherscan.io/address/0xbdd519eba96f1dfb2beef5e76a7343afbb46bfe9#code (deployed with testing parameters)
+TACLockup  -  https://rinkeby.etherscan.io/address/0xbE6492206f460136921308c80D390c3D1D3f1716#code
+TACAdvisorLockup- https://rinkeby.etherscan.io/address/0xbdd519eba96f1dfb2beef5e76a7343afbb46bfe9#code (deployed with testing parameters)
 Fantasy - https://rinkeby.etherscan.io/address/0x5d3fB447F5EC766b80082Be5f7305801dcab0b37#code
 TACVoting = https://rinkeby.etherscan.io/address/0xeeb5ce2bcc1091ac1e9f54e2f6b86e57f6a374db#code
 CoopData = https://rinkeby.etherscan.io/address/0xfba9f15ddefc87d8eb1a0aba92f8b66f8f41f1cc#code
