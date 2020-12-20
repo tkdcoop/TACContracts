@@ -159,9 +159,14 @@ contract CoopData is AccessControl {
         require(msg.sender == _referee, "The referee must record the match");
         require((_winner != _loser) && (_winner != _referee) && (_loser != _referee), "The only true battle is against yourself, but can't count it here.");
         
-        //Decrement the referee's match allowance
-        allUsers[_referee].allowedMatches -= 1;
+        require(allUsers[_winner].userAddress != address(0), "User is not yet registered");
+        require(allUsers[_loser].userAddress != address(0), "User is not yet registered");
         
+        //Decrement the referee's match allowance
+        if (requireMembership == true) {
+        allUsers[_referee].allowedMatches -= 1;
+        }
+
         // Create the proposed match
         Match memory proposedMatch;
         proposedMatch.id = numProposedMatches;
@@ -189,7 +194,16 @@ contract CoopData is AccessControl {
         require(proposedMatches[id].referee == msg.sender, "Only the referee may overwrite a match");
         // Matches can only be overwritten before they have been approved by both athletes
         require(proposedMatches[id].winnerVerified == false || proposedMatches[id].loserVerified == false, "This match has already been finalized");
-    
+        // Each participant can have only one role. 
+        require((_winner != _loser) && (_winner != msg.sender) && (_loser != msg.sender), "The only true battle is against yourself, but can't count it here.");
+        
+        // Reset the athlete approvals since the result has changed. 
+        proposedMatches[id].winnerVerified = false;
+        proposedMatches[id].loserVerified = false;
+
+        require(allUsers[_winner].userAddress != address(0), "User is not yet registered");
+        require(allUsers[_loser].userAddress != address(0), "User is not yet registered");
+
         //Push to their proposedMatches if athlete changes
         if ((_winner != proposedMatches[id].winner) && (_winner != proposedMatches[id].loser)) {
             allUsers[_winner].proposedMatches.push(id);
