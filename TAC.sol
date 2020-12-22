@@ -349,9 +349,8 @@ contract TAC is Context, IERC20, AccessControl {
     //Contract that keeps coop data like users, matches, etc. 
     address public coopDataContract = 0xdce85e1Ee327Ddb81de02A7C7c84fffA17A01C9e;
 
-    bool tokenSaleActive = true;
     bool contractInitialized = false;
-    uint64 TACCostInWei = 4500000000000000;
+    
 
     /**
     * @dev Optional functions from the ERC20 standard.
@@ -570,36 +569,10 @@ contract TAC is Context, IERC20, AccessControl {
         _mint(airdropsAddress, airdropsAllocation); //3% of tokens to airdrops address
     }
     
-    function changeParameters(uint64 _TACCostInWei, bool _tokenSaleActive,uint16 _multiplier, address _coopDataContract, address _votingPoolContract) external onlyCREATOR {
-        TACCostInWei = _TACCostInWei;
-        tokenSaleActive = _tokenSaleActive;
+    function changeParameters(uint16 _multiplier, address _coopDataContract, address _votingPoolContract) external onlyCREATOR {
         multiplier = _multiplier;
         coopDataContract = _coopDataContract;
         votingPoolContract = _votingPoolContract;
-    }
-
-    function getParameters() external view returns (uint64 _TACCostInWei, bool _tokenSaleActive) {
-        _TACCostInWei = TACCostInWei;
-        _tokenSaleActive = tokenSaleActive;
-    }
-
-    /////////////////////////////////////////////////////////TAC TOKEN SALE FUNCTIONS //////////////////////////////////////////////////
-    
-    //Function that mints TAC to the sender address based on how much ETH is sent.
-    function tokenSale(uint256 HwangsToBuy) external payable {
-        require(msg.value > 0, "Please try again by sending some ETH.");
-        require(tokenSaleActive, "The token sale is not currently active");
-        uint256 TACToBuy = SafeMath.div(HwangsToBuy, 1000000000000000000);
-        require(msg.value >= SafeMath.div(TACToBuy, TACCostInWei), "You need to send at least the cost");
-        require((HwangsToBuy + tokenSaleSold) <= tokenSaleMax, "Sorry, there has already been too many TAC sold");
-        require((HwangsToBuy + reserveIssued) <= maxTokenReserve, "Sorry, there has already been too many TAC issued");
-        tokenSaleSold += HwangsToBuy;
-        _mint(msg.sender, HwangsToBuy);
-    }
-
-    //Function that sends the sale balance to the creator address.
-    function withdrawSaleBalance() external onlyCREATOR {
-    creatorAddress.transfer(address(this).balance);
     }
 
     //Function called by coopDataContract to award TAC and lock it up. 
