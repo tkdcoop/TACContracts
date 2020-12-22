@@ -4,15 +4,35 @@ pragma solidity ^0.7.0;
 //Control who can access various functions.
 contract AccessControl {
     address payable public creatorAddress;
-   
+    mapping (address => bool) public admins;
+
     modifier onlyCREATOR() {
         require(msg.sender == creatorAddress, "You are not the creator of this contract");
+        _;
+    }
+
+    modifier onlyADMINS() {
+      
+      require(admins[msg.sender] == true);
         _;
     }
 
     // Constructor
     constructor() {
         creatorAddress = msg.sender;
+    }
+
+    //Seraphims are contracts or addresses that have write access
+    function addAdmin(address _newAdmin) onlyCREATOR public {
+        if (admins[_newAdmin] == false) {
+            admins[_newAdmin] = true;
+        }
+    }
+    
+    function removeAdmin(address _oldAdmin) onlyCREATOR public {
+        if (admins[_oldAdmin] == true) {
+            admins[_oldAdmin] = false;
+        }
     }
 }
 
@@ -126,7 +146,7 @@ contract CoopData is AccessControl {
     //Function which specifies how many matches a user has left.
     //Only coop members have approved matches and only referees need them. 
     //Set 0 to remove a user's ability to record matches. 
-    function setUserAllowedMatches(address user, uint8 newApprovalNumber) public onlyCREATOR {
+    function setUserAllowedMatches(address user, uint8 newApprovalNumber) public onlyADMINS {
         allUsers[user].allowedMatches = newApprovalNumber;
     }
 
@@ -310,7 +330,7 @@ contract CoopData is AccessControl {
      
     }
 
-     function approveEvent(uint64 _eventId, uint16 _numMatches) public onlyCREATOR {
+     function approveEvent(uint64 _eventId, uint16 _numMatches) public onlyADMINS {
         // Function to allow an event host to approve a specified number of matches.
         allEvents[_eventId].allowedMatches = _numMatches;
      }
