@@ -322,14 +322,11 @@ contract TAC is Context, IERC20, AccessControl {
     //There is a hard cap of 1B TAC Tokens. 
     //7% to advisors (subject to timelock) and 3% to airdrops is sent on contract initialization
     //The other 90% are part of the reserve and can be issued at any time. 
-    //Up to 15% can be sold directly at a later date if there are suffecient tokens in the reserve.
       
     uint256 public advisorAllocation = 70000000000000000000000000;
     uint256 public airdropsAllocation = 30000000000000000000000000;
     uint256 public maxTokenReserve = 900000000000000000000000000; 
-    uint256 public tokenSaleMax = 15000000000000000000000000; 
-    uint256 public tokenSaleSold = 0;
-
+ 
     //Base TAC distribution values for each match participant.
 
     uint16 public multiplier = 10; //How much the below values are multiplied by to get the final distribution.
@@ -580,7 +577,7 @@ contract TAC is Context, IERC20, AccessControl {
         require(msg.sender == coopDataContract, "Only the CoopData Contract may call this function");
         ITACLockup TACLockup = ITACLockup(lockupContract);
         uint256 tokensToIssue = (athleteBase + athleteBase + poolBase + refBase) * multiplier;
-        if ((tokensToIssue + reserveIssued + tokenSaleSold) <= maxTokenReserve) {
+        if ((tokensToIssue + reserveIssued) <= maxTokenReserve) {
         reserveIssued += tokensToIssue;
             //credit the winner
             _mint(lockupContract,athleteBase*multiplier);
