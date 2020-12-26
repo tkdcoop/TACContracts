@@ -405,6 +405,7 @@ contract CoopData is AccessControl {
 
         Event memory newEvent;
         ITAC TAC = ITAC(TACContract);
+        require((allUsers[msg.sender].allowedMatches > 0 || requireMembership == false), "Members must have available allowed matches");
         require(TAC.balanceOf(msg.sender) >= eventHostingCost, "You need to have more TAC to open an event. ");
         TAC.transferFrom(msg.sender, creatorAddress, eventHostingCost);
         newEvent.promoter = msg.sender;
