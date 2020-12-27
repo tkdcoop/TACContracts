@@ -416,7 +416,7 @@ contract CoopData is AccessControl {
     }
     
     
-     function approveEvent(uint64 _eventId, uint16 _numMatches) public onlyADMINS {
+    function approveEvent(uint64 _eventId, uint16 _numMatches) public onlyADMINS {
         // Function to allow an event host to approve a specified number of matches.
         allEvents[_eventId].allowedMatches = _numMatches;
      }
