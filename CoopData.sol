@@ -22,7 +22,7 @@ contract AccessControl {
         creatorAddress = msg.sender;
     }
 
-    //Seraphims are contracts or addresses that have write access
+    //Admins are contracts or addresses that have write access
     function addAdmin(address _newAdmin) onlyCREATOR public {
         if (admins[_newAdmin] == false) {
             admins[_newAdmin] = true;
