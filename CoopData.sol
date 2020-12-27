@@ -330,18 +330,6 @@ contract CoopData is AccessControl {
      
     }
 
-     function approveEvent(uint64 _eventId, uint16 _numMatches) public onlyADMINS {
-        // Function to allow an event host to approve a specified number of matches.
-        allEvents[_eventId].allowedMatches = _numMatches;
-     }
-    
-    //Function a tournament promoter can call to delegate staff to record matches. 
-    function addStaff(uint64 _eventId, address _newStaff) public {
-        //Check that the tournament promoter is the caller
-        require(msg.sender == allEvents[_eventId].promoter, "Only the promoter can add staff");
-        tournamentStaff[_newStaff] = _eventId;
-
-    }
 
     function recordEventMatch(uint64 _eventId, address _winner, uint8 _winnerPoints, address _loser, uint8 _loserPoints, address _referee) public {
         //Check that the tournament promoter is the caller
@@ -425,6 +413,20 @@ contract CoopData is AccessControl {
        eventName = eventToGet.eventName;
        eventId = eventToGet.eventId;
        allowedMatches = eventToGet.allowedMatches;   
+    }
+    
+    
+     function approveEvent(uint64 _eventId, uint16 _numMatches) public onlyADMINS {
+        // Function to allow an event host to approve a specified number of matches.
+        allEvents[_eventId].allowedMatches = _numMatches;
+     }
+    
+    //Function a tournament promoter can call to delegate staff to record matches. 
+    function addStaff(uint64 _eventId, address _newStaff) public {
+        //Check that the tournament promoter is the caller
+        require(msg.sender == allEvents[_eventId].promoter, "Only the promoter can add staff");
+        tournamentStaff[_newStaff] = _eventId;
+
     }
 
 }
