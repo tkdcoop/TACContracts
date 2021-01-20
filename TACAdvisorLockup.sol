@@ -92,11 +92,11 @@ contract TACAdvisorLockup is AccessControl  {
         beneficiary.balance = beneficiary.periodAllocation * 5;
         Beneficiaries.push(beneficiary);
 
-        beneficiary.beneficaryAddress = 0x147f0692c258Bc813Ccd13E35DA2ffEB39e09221;
-        beneficiary.periodAllocation = 500000000000000000000000;
+        beneficiary.beneficaryAddress = 0xd8f4109699098702cdf94b8dc0a647711A107a63;
+        beneficiary.periodAllocation = 200000000000000000000000;
         beneficiary.balance = beneficiary.periodAllocation * 5;
         Beneficiaries.push(beneficiary);
-
+        
         beneficiary.beneficaryAddress = 0xC30a96bEd7608F0793f9D1cAA50004AE5D6Ce882;
         beneficiary.periodAllocation = 600000000000000000000000;
         beneficiary.balance = beneficiary.periodAllocation * 5;
@@ -106,9 +106,9 @@ contract TACAdvisorLockup is AccessControl  {
         beneficiary.periodAllocation = 200000000000000000000000;
         beneficiary.balance = beneficiary.periodAllocation * 5;
         Beneficiaries.push(beneficiary);
-        
+
         beneficiary.beneficaryAddress = 0xF708183A8A379C187fd684f6c607ae394679Ea81;
-        beneficiary.periodAllocation = 200000000000000000000000;
+        beneficiary.periodAllocation = 500000000000000000000000;
         beneficiary.balance = beneficiary.periodAllocation * 5;
         Beneficiaries.push(beneficiary);
 
@@ -128,19 +128,76 @@ contract TACAdvisorLockup is AccessControl  {
         Beneficiaries.push(beneficiary);
 
         beneficiary.beneficaryAddress = 0xFB84c39BbAe367FED2b84930755493FaE00Fd572;
-        beneficiary.periodAllocation = 100000000000000000000000;
+        beneficiary.periodAllocation = 40000000000000000000000;
         beneficiary.balance = beneficiary.periodAllocation * 5;
         Beneficiaries.push(beneficiary);
 
+
+        beneficiary.beneficaryAddress = 0x8b7A466fFdC348afE54b159d70C7274a4F0157aa;
+        beneficiary.periodAllocation = 20000000000000000000000;
+        beneficiary.balance = beneficiary.periodAllocation * 5;
+        Beneficiaries.push(beneficiary);
+
+        beneficiary.beneficaryAddress = 0x91ADeb8FA2599Bf46a982De34A020BFFD916e2d1;
+        beneficiary.periodAllocation = 20000000000000000000000;
+        beneficiary.balance = beneficiary.periodAllocation * 5;
+        Beneficiaries.push(beneficiary);
+
+        beneficiary.beneficaryAddress = 0x753c43d7616Ac60d8dD3592b59A104c7518426e3;
+        beneficiary.periodAllocation = 20000000000000000000000;
+        beneficiary.balance = beneficiary.periodAllocation * 5;
+        Beneficiaries.push(beneficiary);
+
+        beneficiary.beneficaryAddress = 0xd8fa2675D742D7E9C8B96d41316c0E52b7991cDa;
+        beneficiary.periodAllocation = 20000000000000000000000;
+        beneficiary.balance = beneficiary.periodAllocation * 5;
+        Beneficiaries.push(beneficiary);
+
+        beneficiary.beneficaryAddress = 0x9C24Ae443b7d639C179187CEf66652A6AFa9db70;
+        beneficiary.periodAllocation = 20000000000000000000000;
+        beneficiary.balance = beneficiary.periodAllocation * 5;
+        Beneficiaries.push(beneficiary);
+
+        beneficiary.beneficaryAddress = 0xd209435C2F706518C0dd4399D264f7Cc2015B020;
+        beneficiary.periodAllocation = 20000000000000000000000;
+        beneficiary.balance = beneficiary.periodAllocation * 5;
+        Beneficiaries.push(beneficiary);
+
+        beneficiary.beneficaryAddress = 0xd35bD47F9DA88c9879BF370c94Bf72627943C310;
+        beneficiary.periodAllocation = 20000000000000000000000;
+        beneficiary.balance = beneficiary.periodAllocation * 5;
+        Beneficiaries.push(beneficiary);
+
+        beneficiary.beneficaryAddress = 0x6a3B1C4763eCa8950506cF30Eaa8d1Ed46ca2a15;
+        beneficiary.periodAllocation = 20000000000000000000000;
+        beneficiary.balance = beneficiary.periodAllocation * 5;
+        Beneficiaries.push(beneficiary);
+
+        beneficiary.beneficaryAddress = 0xF0FBbec2E02Ce52B36c001701E17518391135126;
+        beneficiary.periodAllocation = 20000000000000000000000;
+        beneficiary.balance = beneficiary.periodAllocation * 5;
+        Beneficiaries.push(beneficiary);
+
+        beneficiary.beneficaryAddress = 0xcE0AbaD092146C1FD10e206aED7FEF4736ebd16a;
+        beneficiary.periodAllocation = 20000000000000000000000;
+        beneficiary.balance = beneficiary.periodAllocation * 5;
+        Beneficiaries.push(beneficiary);
+
+        beneficiary.beneficaryAddress = 0x29e0C63acaBF7bf817005fc6d46a5b0b38E42da1;
+        beneficiary.periodAllocation = 20000000000000000000000;
+        beneficiary.balance = beneficiary.periodAllocation * 5;
+        Beneficiaries.push(beneficiary);
+
+
         beneficiary.beneficaryAddress = 0xbd661e79c7945232CB2A07109b34a7a513313999;
-        beneficiary.periodAllocation = 100000000000000000000000;
+        beneficiary.periodAllocation = 20000000000000000000000;
         beneficiary.balance = beneficiary.periodAllocation * 5;
         Beneficiaries.push(beneficiary);
 
         beneficiary.beneficaryAddress = 0xB22FAB8183e7AA66D2653b963acdD8B7BB8c36B6;
-        beneficiary.periodAllocation = 100000000000000000000000;
+        beneficiary.periodAllocation = 20000000000000000000000;
         beneficiary.balance = beneficiary.periodAllocation * 5;
-        Beneficiaries.push(beneficiary);
+        Beneficiaries.push(beneficiary); 
 
     }
 
