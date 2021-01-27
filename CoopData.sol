@@ -19,7 +19,7 @@ contract AccessControl {
 
     // Constructor
     constructor() {
-        creatorAddress = msg.sender;
+        creatorAddress = 0x813dd04A76A716634968822f4D30Dfe359641194;
     }
 
     //Admins are contracts or addresses that have write access
@@ -101,7 +101,7 @@ contract CoopData is AccessControl {
 
     //A list of all proposed matches to be used as ID. 
     uint64 public numProposedMatches = 0;
-    bool public requireMembership = false;
+    bool public requireMembership = true;
 
     address public TACContract = 0xABa8ace37f301E7a3A3FaD44682C8Ec8DC2BD18A;
     
