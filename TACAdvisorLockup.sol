@@ -14,7 +14,7 @@ contract AccessControl {
     }
    // Constructor
     constructor() {
-        creatorAddress = msg.sender;
+        creatorAddress = 0x813dd04A76A716634968822f4D30Dfe359641194;
     }
 } 
 
@@ -27,8 +27,8 @@ contract TACAdvisorLockup is AccessControl  {
 
      /////////////////////////////////////////////////DATA STRUCTURES AND GLOBAL VARIABLES ///////////////////////////////////////////////////////////////////////
 
-    //Lockup duration in seconds - 1 year on mainnet, less for testing.
-    uint64 public lockupDuration = 604800;
+    //Lockup duration in seconds - 1 year.
+    uint64 public lockupDuration = 31536000;
 
     struct Beneficiary {
         address beneficaryAddress;
