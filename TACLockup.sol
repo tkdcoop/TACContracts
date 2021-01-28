@@ -1,3 +1,5 @@
+//Audit report available at https://www.tkd-coop.com/files/audit.pdf
+
 //SPDX-License-Identifier: MIT
 pragma solidity ^0.7.0;
 
@@ -18,7 +20,7 @@ contract AccessControl {
 
    // Constructor
     constructor()  {
-        creatorAddress = msg.sender;
+        creatorAddress = 0x813dd04A76A716634968822f4D30Dfe359641194;
     }
 }
 
