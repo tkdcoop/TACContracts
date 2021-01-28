@@ -1,3 +1,5 @@
+//Audit report available at https://www.tkd-coop.com/files/audit.pdf
+
 //SPDX-License-Identifier: MIT
 pragma solidity ^0.7.0;
 
