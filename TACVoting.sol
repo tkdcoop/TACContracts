@@ -184,7 +184,7 @@ contract AccessControl {
 
    // Constructor
     constructor() public {
-        creatorAddress = msg.sender;
+        creatorAddress = 0x813dd04A76A716634968822f4D30Dfe359641194;
     }
 }
 
@@ -196,7 +196,7 @@ contract TACVoting is AccessControl {
     uint256 public numElections = 0;
 
     //How long to open an election for
-    uint64 public electionDuration = 3600;
+    uint64 public electionDuration = 604800;
 
     //The oldest any match can be to still compete. maxMatchAge of 0 means all matches are valid.
     uint64 public maxMatchAge = 0;
