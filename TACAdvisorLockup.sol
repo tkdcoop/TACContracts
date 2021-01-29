@@ -72,7 +72,7 @@ contract TACAdvisorLockup is AccessControl  {
         beneficiary.balance = beneficiary.periodAllocation * 5;
         Beneficiaries.push(beneficiary);
 
-        beneficiary.beneficaryAddress = 0xF2d4Bc74da733c2B0842D3c9F0B8C32c9aA7d6B3;
+        beneficiary.beneficaryAddress = 0x97f7366D4778D91fd2D4249fBe0b744B61D4BFE4;
         beneficiary.periodAllocation = 1800000000000000000000000;
         beneficiary.balance = beneficiary.periodAllocation * 5;
         Beneficiaries.push(beneficiary);
