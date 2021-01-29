@@ -344,7 +344,7 @@ contract TAC is Context, IERC20, AccessControl {
     //Contract that time-delays release of TAC.
     address public lockupContract = 0x753352f30776C51Ace40A41b25c2e9130a0A5EC4;
     //Airdrops Address
-    address public airdropsAddress = 0xf934bfd04f1a4DCa2C7dDAcC5D59ECb71059FdBA;
+    address public airdropsAddress = 0x7FF6bFCb2e9FbA0CCEFEFB027255254CB3c46589;
     //Contract that keeps coop data like users, matches, etc. 
     address public coopDataContract = 0xdce85e1Ee327Ddb81de02A7C7c84fffA17A01C9e;
 
