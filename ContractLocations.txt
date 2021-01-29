@@ -4,3 +4,6 @@ Fantasy - https://rinkeby.etherscan.io/address/0x5d3fB447F5EC766b80082Be5f730580
 TACVoting = https://rinkeby.etherscan.io/address/0xeeb5ce2bcc1091ac1e9f54e2f6b86e57f6a374db#code
 CoopData = https://rinkeby.etherscan.io/address/0xfba9f15ddefc87d8eb1a0aba92f8b66f8f41f1cc#code
 TAC - https://rinkeby.etherscan.io/address/0xaba8ace37f301e7a3a3fad44682c8ec8dc2bd18a#code (run initContract)
+
+
+Airdrops multisig = https://gnosis-safe.io/app/#/safes/0x7FF6bFCb2e9FbA0CCEFEFB027255254CB3c46589/balances
