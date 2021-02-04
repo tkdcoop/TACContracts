@@ -338,15 +338,15 @@ contract TAC is Context, IERC20, AccessControl {
     uint poolBase = 1000000000000000000;
 
     //Contract that awards bonus TAC for winning 'match of the week'
-    address public votingPoolContract = 0xCce7F04eb0Ca7789aee813222C57f009ea4F7e17;
+    address public votingPoolContract = 0x1691D63825Bca3352f66F55EC616f6340BbD63e8;
     //Contract where advisors' funds are held
-    address public advisorLockupContract = 0xd08a9e61a59d2C9C7EFbaf25546D959DB075Fa26;
+    address public advisorLockupContract = 0x1e1276A0B78934A17A15A84a6c246829eaa877F7;
     //Contract that time-delays release of TAC.
-    address public lockupContract = 0x753352f30776C51Ace40A41b25c2e9130a0A5EC4;
+    address public lockupContract = 0x4a9feB75EC0811006AEAB28e72c706286336fb10;
     //Airdrops Address
     address public airdropsAddress = 0x7FF6bFCb2e9FbA0CCEFEFB027255254CB3c46589;
     //Contract that keeps coop data like users, matches, etc. 
-    address public coopDataContract = 0xdce85e1Ee327Ddb81de02A7C7c84fffA17A01C9e;
+    address public coopDataContract = 0x3f71D9F4938b7DD01021e1634101f998725227Ce;
 
     bool contractInitialized = false;
     
