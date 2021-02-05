@@ -2,8 +2,8 @@ TACLockup  -  https://etherscan.io/address/0x4a9feb75ec0811006aeab28e72c70628633
 TACAdvisorLockup- https://etherscan.io/address/0x1e1276a0b78934a17a15a84a6c246829eaa877f7#code
 Fantasy - Not yet deployed
 TACVoting - https://etherscan.io/address/0x1691d63825bca3352f66f55ec616f6340bbd63e8#code
-CoopData -
-TAC -
+CoopData - https://etherscan.io/address/0x3f71d9f4938b7dd01021e1634101f998725227ce#code
+TAC -https://etherscan.io/address/0xdeeb6091a5adc78fa0332bee5a38a8908b6b566e
 
 
 Airdrops multisig = https://gnosis-safe.io/app/#/safes/0x7FF6bFCb2e9FbA0CCEFEFB027255254CB3c46589/balances
