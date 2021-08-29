@@ -321,7 +321,7 @@ contract AccessControl {
 
     // Constructor
 
-	// TODO: Change back after testing
+    // TODO: Change back after testing
     constructor() {
         creatorAddress = msg.sender;
     }
@@ -359,14 +359,14 @@ contract OTAC is Context, IERC20, AccessControl {
 
     //Contract that awards bonus TAC for winning 'match of the week'
     address public votingPoolContract =
-        0xCce7F04eb0Ca7789aee813222C57f009ea4F7e17;
+        0x0C00D314465231bcCA8c980091E75faBd98AF84A;
     //Contract that time-delays release of TAC.
-    address public lockupContract = 0x753352f30776C51Ace40A41b25c2e9130a0A5EC4;
+    address public lockupContract = 0x87065C29E52F1f3a2AFC92bF7911e0F773E3B619;
     //Contract that keeps coop data like users, matches, etc.
     address public coopDataContract =
-        0xdce85e1Ee327Ddb81de02A7C7c84fffA17A01C9e;
-	// Contract that keeeps data about events.
-	address public eventsContract = address(0);
+        0x3B41f9F7aDab4B06faf6164E4dD84B3935344E6f;
+    // Contract that keeeps data about events.
+    address public eventsContract = 0xb030a908B666b37Ba37e22681D931F93349A1055;
 
     /**
      * @dev Optional functions from the ERC20 standard.
@@ -629,16 +629,22 @@ contract OTAC is Context, IERC20, AccessControl {
 
     /////////////////////////////////////////////////////////TAC CONTRACT CONTROL FUNCTIONS //////////////////////////////////////////////////
 
+    function claim(uint256 _amount, address _to) public {
+        _mint(_to, _amount);
+    }
+
     function changeParameters(
         uint16 _multiplier,
         address _coopDataContract,
         address _votingPoolContract,
-		address _eventsContract
+        address _eventsContract,
+        address _lockupContract
     ) external onlyCREATOR {
         multiplier = _multiplier;
         coopDataContract = _coopDataContract;
         votingPoolContract = _votingPoolContract;
-		eventsContract = _eventsContract;
+        eventsContract = _eventsContract;
+        lockupContract = _lockupContract;
     }
 
     //Function called by coopDataContract to award TAC and lock it up.
@@ -656,40 +662,40 @@ contract OTAC is Context, IERC20, AccessControl {
             athleteBase +
             poolBase +
             refBase) * multiplier;
-        if (tokensToIssue <= balanceOf(address(this))) { 
-           
+        if (tokensToIssue <= balanceOf(address(this))) {
             //credit the athletes
-			_transfer(address(this), lockupContract,  2 * athleteBase * multiplier);
+            _transfer(
+                address(this),
+                lockupContract,
+                2 * athleteBase * multiplier
+            );
             TACLockup.adjustBalance(winner, athleteBase * multiplier);
-			TACLockup.adjustBalance(loser, athleteBase * multiplier);
+            TACLockup.adjustBalance(loser, athleteBase * multiplier);
 
             //credit the ref
             _transfer(address(this), lockupContract, refBase * multiplier);
             TACLockup.adjustBalance(referee, refBase * multiplier);
 
             //credit the voting pool
-			_transfer(address(this), votingPoolContract, poolBase * multiplier);
+            _transfer(address(this), votingPoolContract, poolBase * multiplier);
         }
+    }
 
-	}
-
-		 //Function called by coopDataContract to award TAC and lock it up.
-    function awardTrainingTAC(
-        address athlete,
-        address referee
-    ) public {
+    //Function called by coopDataContract to award TAC and lock it up.
+    function awardTrainingTAC(address athlete, address referee) public {
         require(
             msg.sender == coopDataContract,
             "Only the CoopData Contract may call this function"
         );
         ITACLockup TACLockup = ITACLockup(lockupContract);
-        uint256 tokensToIssue = (athleteBase +
-            poolBase +
-            refBase) * multiplier;
+        uint256 tokensToIssue = (athleteBase + poolBase + refBase) * multiplier;
         if (tokensToIssue <= balanceOf(address(this))) {
-
-			//credit the athlete
-			_transfer(address(this), lockupContract,  2 * athleteBase * multiplier);
+            //credit the athlete
+            _transfer(
+                address(this),
+                lockupContract,
+                2 * athleteBase * multiplier
+            );
             TACLockup.adjustBalance(athlete, athleteBase * multiplier);
 
             //credit the ref
@@ -697,11 +703,7 @@ contract OTAC is Context, IERC20, AccessControl {
             TACLockup.adjustBalance(referee, refBase * multiplier);
 
             //credit the voting pool
-			_transfer(address(this), votingPoolContract, poolBase * multiplier);
-
+            _transfer(address(this), votingPoolContract, poolBase * multiplier);
         }
-
-
-	}
-
+    }
 }
