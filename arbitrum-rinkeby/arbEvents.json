@@ -1,0 +1,311 @@
+[
+	{
+		"inputs": [],
+		"name": "CoopDataContract",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "TACContract",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_newAdmin",
+				"type": "address"
+			}
+		],
+		"name": "addAdmin",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint64",
+				"name": "_eventId",
+				"type": "uint64"
+			},
+			{
+				"internalType": "address",
+				"name": "_newStaff",
+				"type": "address"
+			}
+		],
+		"name": "addStaff",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "admins",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint64",
+				"name": "_eventId",
+				"type": "uint64"
+			},
+			{
+				"internalType": "uint16",
+				"name": "_numMatches",
+				"type": "uint16"
+			}
+		],
+		"name": "approveEvent",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_eventHostingCost",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "_TACContract",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_CoopDataContract",
+				"type": "address"
+			}
+		],
+		"name": "changeParameters",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "creatorAddress",
+		"outputs": [
+			{
+				"internalType": "address payable",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint64",
+				"name": "_eventId",
+				"type": "uint64"
+			}
+		],
+		"name": "decrementAllowedMatches",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "eventHostingCost",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint64",
+				"name": "_eventId",
+				"type": "uint64"
+			}
+		],
+		"name": "getEvent",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "promoter",
+				"type": "address"
+			},
+			{
+				"internalType": "uint64",
+				"name": "time",
+				"type": "uint64"
+			},
+			{
+				"internalType": "uint64",
+				"name": "eventId",
+				"type": "uint64"
+			},
+			{
+				"internalType": "string",
+				"name": "eventName",
+				"type": "string"
+			},
+			{
+				"internalType": "uint16",
+				"name": "allowedMatches",
+				"type": "uint16"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getParameters",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "_eventHostingCost",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint64",
+				"name": "startTime",
+				"type": "uint64"
+			},
+			{
+				"internalType": "string",
+				"name": "eventName",
+				"type": "string"
+			}
+		],
+		"name": "hostEvent",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "numEvents",
+		"outputs": [
+			{
+				"internalType": "uint16",
+				"name": "",
+				"type": "uint16"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_winner",
+				"type": "address"
+			},
+			{
+				"internalType": "uint8",
+				"name": "_winnerPoints",
+				"type": "uint8"
+			},
+			{
+				"internalType": "address",
+				"name": "_loser",
+				"type": "address"
+			},
+			{
+				"internalType": "uint8",
+				"name": "_loserPoints",
+				"type": "uint8"
+			},
+			{
+				"internalType": "address",
+				"name": "_referee",
+				"type": "address"
+			},
+			{
+				"internalType": "uint64",
+				"name": "_eventId",
+				"type": "uint64"
+			}
+		],
+		"name": "recordEventMatch",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_oldAdmin",
+				"type": "address"
+			}
+		],
+		"name": "removeAdmin",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "tournamentStaff",
+		"outputs": [
+			{
+				"internalType": "uint64",
+				"name": "",
+				"type": "uint64"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]

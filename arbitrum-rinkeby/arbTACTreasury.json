@@ -1,0 +1,172 @@
+[
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "winner",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "loser",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "referee",
+				"type": "address"
+			}
+		],
+		"name": "awardTAC",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "athlete",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "referee",
+				"type": "address"
+			}
+		],
+		"name": "awardTrainingTAC",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint16",
+				"name": "_multiplier",
+				"type": "uint16"
+			},
+			{
+				"internalType": "address",
+				"name": "_coopDataContract",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_votingPoolContract",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_eventsContract",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_lockupContract",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_tACContract",
+				"type": "address"
+			}
+		],
+		"name": "changeParameters",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "coopDataContract",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "creatorAddress",
+		"outputs": [
+			{
+				"internalType": "address payable",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "eventsContract",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "lockupContract",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "multiplier",
+		"outputs": [
+			{
+				"internalType": "uint16",
+				"name": "",
+				"type": "uint16"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "tACContract",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "votingPoolContract",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
