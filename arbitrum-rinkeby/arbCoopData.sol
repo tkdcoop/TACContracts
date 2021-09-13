@@ -124,9 +124,9 @@ contract CoopData is AccessControl {
     uint64 public numProposedMatches = 0;
     bool public requireMembership = true;
 
-    address public TACContract = 0xdbCCd6D9640E3aaCcb288be5C6ee6455d940cede;
+    address public TACContract = 0x552A032fd4A051b53A487762133b6085cA95F403;
     address public EventsContract = 0xb030a908B666b37Ba37e22681D931F93349A1055;
-    address public tACTreasuryContract = address(0);
+    address public tACTreasuryContract = 0xCA4eb1B6922dEf07b7a6FADD9Ab1545B92Cf0be3;
 
     //The amount of Hwangs required to spar a match.
     uint256 public matchCost = 10000000000000000000;
@@ -535,7 +535,7 @@ contract CoopData is AccessControl {
                 requireMembership == false),
             "Referee must have available allowed matches"
         );
-        require(msg.sender == _athlete, "You cannot record your own match");
+        require(msg.sender != _athlete, "You cannot record your own match");
 
         //Decrement the referee's match allowance
         if (requireMembership == true) {
