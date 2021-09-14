@@ -46,7 +46,6 @@ contract AccessControl {
 
 //Interface to TAC Contract
 abstract contract ITAC {
-   
     function transferFrom(
         address sender,
         address recipient,
@@ -56,17 +55,14 @@ abstract contract ITAC {
     function balanceOf(address account) external view virtual returns (uint256);
 }
 
-
 abstract contract ITACTreasury {
-    
-     function awardTAC(
+    function awardTAC(
         address winner,
         address loser,
         address referee
     ) public virtual;
 
     function awardTrainingTAC(address athlete, address referee) public virtual;
-
 }
 
 contract CoopData is AccessControl {
@@ -74,7 +70,6 @@ contract CoopData is AccessControl {
 
     uint256 public numUsers = 0; //total number of user profiles, independent of number of addresses with balances
     uint64 public numMatches = 0; //total number of matches recorded
-
 
     //Main data structure to hold info about an athlete
     struct User {
@@ -114,7 +109,7 @@ contract CoopData is AccessControl {
     // Main mapping storing an Match record for each match id.
     Match[] public allMatches;
     Match[] public proposedMatches;
-    Training[] allTrainings;
+    Training[] public allTrainings;
     address[] public allUsersById;
 
     // Main mapping storing an athlete record for each address.
@@ -126,7 +121,8 @@ contract CoopData is AccessControl {
 
     address public TACContract = 0x552A032fd4A051b53A487762133b6085cA95F403;
     address public EventsContract = 0xb030a908B666b37Ba37e22681D931F93349A1055;
-    address public tACTreasuryContract = 0xCA4eb1B6922dEf07b7a6FADD9Ab1545B92Cf0be3;
+    address public tACTreasuryContract =
+        0xCA4eb1B6922dEf07b7a6FADD9Ab1545B92Cf0be3;
 
     //The amount of Hwangs required to spar a match.
     uint256 public matchCost = 10000000000000000000;
@@ -137,7 +133,7 @@ contract CoopData is AccessControl {
         address _TACContract,
         address _EventsContract,
         uint256 _matchCost,
-        bool _requireMembership, 
+        bool _requireMembership,
         address _tacTreasuryContract
     ) external onlyCREATOR {
         TACContract = _TACContract;
@@ -146,7 +142,6 @@ contract CoopData is AccessControl {
         requireMembership = _requireMembership;
         tACTreasuryContract = _tacTreasuryContract;
     }
-
 
     /////////////////////////////////////////////////////////USER INFO FUNCTIONS  //////////////////////////////////////////////////
 
@@ -440,7 +435,7 @@ contract CoopData is AccessControl {
         //Transfer the 10 TAC from each athlete.
         TAC.transferFrom(proposedMatches[id].loser, creatorAddress, matchCost);
         TAC.transferFrom(proposedMatches[id].winner, creatorAddress, matchCost);
-        
+
         ITACTreasury TACTreasury = ITACTreasury(tACTreasuryContract);
         //Award bonus TAC
         TACTreasury.awardTAC(
@@ -491,13 +486,11 @@ contract CoopData is AccessControl {
             TAC.transferFrom(_loser, creatorAddress, matchCost);
             TAC.transferFrom(_winner, creatorAddress, matchCost);
 
-
             ITACTreasury TACTreasury = ITACTreasury(tACTreasuryContract);
             //Issue TAC
             TACTreasury.awardTAC(_winner, _loser, _referee);
             return (numMatches - 1);
-        }
-        else {
+        } else {
             return 0;
         }
     }
@@ -557,6 +550,30 @@ contract CoopData is AccessControl {
         allUsers[msg.sender].trainings.push(training.id);
     }
 
+    function getAllTrainings() public view returns (Training[] memory) {
+        return allTrainings;
+    }
+
+    function getTraining(uint64 idToGet)
+        public
+        view
+        returns (
+            uint64 id,
+            address athlete,
+            address referee,
+            uint8 info,
+            bool verified,
+            uint64 time
+        )
+    {
+        id = allTrainings[idToGet].id;
+        athlete = allTrainings[idToGet].athlete;
+        referee = allTrainings[idToGet].referee;
+        info = allTrainings[idToGet].info;
+        verified = allTrainings[idToGet].verified;
+        time = allTrainings[idToGet].time;
+    }
+
     function verifyTraining(uint64 id) public {
         require(
             allTrainings[id].verified == false,
@@ -573,7 +590,6 @@ contract CoopData is AccessControl {
         //Transfer 10 TAC from the athlete.
         TAC.transferFrom(msg.sender, creatorAddress, matchCost);
 
-    
         ITACTreasury TACTreasury = ITACTreasury(tACTreasuryContract);
 
         //Award bonus TAC
