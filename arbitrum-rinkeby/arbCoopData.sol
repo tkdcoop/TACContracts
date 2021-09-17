@@ -585,6 +585,8 @@ contract CoopData is AccessControl {
             "Only the athlete may verify"
         );
 
+        allTrainings[id].verified = true;
+        
         ITAC TAC = ITAC(TACContract);
 
         //Transfer 10 TAC from the athlete.
