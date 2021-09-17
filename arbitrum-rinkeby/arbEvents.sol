@@ -14,6 +14,25 @@ contract AccessControl {
         _;
     }
 
+    modifier onlyADMINS() {
+        require(admins[msg.sender] == true);
+        _;
+    }
+
+    //Admins are contracts or addresses that have write access
+    function addAdmin(address _newAdmin) public onlyCREATOR {
+        if (admins[_newAdmin] == false) {
+            admins[_newAdmin] = true;
+        }
+    }
+
+    function removeAdmin(address _oldAdmin) public onlyCREATOR {
+        if (admins[_oldAdmin] == true) {
+            admins[_oldAdmin] = false;
+        }
+    }
+
+
     // Constructor
 
     // CHANGE CREATOR BACK BEFORE DEPLOYING
