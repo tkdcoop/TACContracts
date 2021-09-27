@@ -21,17 +21,13 @@ contract AccessControl {
 
     // Constructor
 
-    // CHANGE CREATOR BACK BEFORE DEPLOYING
     constructor() {
-        creatorAddress = payable(msg.sender);
+        creatorAddress = payable(0x813dd04A76A716634968822f4D30Dfe359641194);
     }
 
     //Admins are contracts or addresses that have write access
 
-    // TODO: CHANGE MODIFIER BACK
-    //     function addAdmin(address _newAdmin) public onlyCREATOR {
-
-    function addAdmin(address _newAdmin) public {
+    function addAdmin(address _newAdmin) public onlyCREATOR {
         if (admins[_newAdmin] == false) {
             admins[_newAdmin] = true;
         }
@@ -528,7 +524,7 @@ contract CoopData is AccessControl {
                 requireMembership == false),
             "Referee must have available allowed matches"
         );
-        require(msg.sender != _athlete, "You cannot record your own match");
+        require(msg.sender != _athlete, "You cannot record your own training");
 
         //Decrement the referee's match allowance
         if (requireMembership == true) {
@@ -586,7 +582,7 @@ contract CoopData is AccessControl {
         );
 
         allTrainings[id].verified = true;
-        
+
         ITAC TAC = ITAC(TACContract);
 
         //Transfer 10 TAC from the athlete.
