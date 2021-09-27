@@ -19,9 +19,8 @@ contract AccessControl {
 
     // Constructor
 
-    // TODO: Change back
     constructor() {
-        creatorAddress = payable(msg.sender);
+        creatorAddress = payable(0x813dd04A76A716634968822f4D30Dfe359641194);
     }
 }
 
