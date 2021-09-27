@@ -10,7 +10,7 @@ contract AccessControl {
     mapping(address => bool) public admins;
 
     modifier onlyCREATOR() {
-        require(msg.sender == creatorAddress, "1");
+        require(msg.sender == creatorAddress, "Only Creator May Call");
         _;
     }
 
@@ -32,12 +32,9 @@ contract AccessControl {
         }
     }
 
-
     // Constructor
-
-    // CHANGE CREATOR BACK BEFORE DEPLOYING
     constructor() {
-        creatorAddress = payable(msg.sender);
+        creatorAddress = payable(0x813dd04A76A716634968822f4D30Dfe359641194);
     }
 }
 
