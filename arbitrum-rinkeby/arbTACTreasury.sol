@@ -121,7 +121,7 @@ contract TACTreasury is AccessControl {
         uint256 tokensToIssue = (athleteBase + poolBase + refBase) * multiplier;
         if (tokensToIssue <= TAC.balanceOf(address(this))) {
             //credit the athlete
-            TAC.transfer(lockupContract, 2 * athleteBase * multiplier);
+            TAC.transfer(lockupContract, athleteBase * multiplier);
             TACLockup.adjustBalance(athlete, athleteBase * multiplier);
 
             //credit the ref
