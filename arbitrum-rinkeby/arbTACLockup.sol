@@ -20,7 +20,7 @@ contract AccessControl {
     // Constructor
 
     constructor() {
-        creatorAddress = payable(0x813dd04A76A716634968822f4D30Dfe359641194);
+        creatorAddress = payable(msg.sender);
     }
 }
 
