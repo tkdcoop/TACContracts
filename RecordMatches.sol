@@ -131,18 +131,18 @@ contract RecordMatches is AccessControl {
     /////////////////////////////////////////////////////////USER INFO FUNCTIONS  //////////////////////////////////////////////////
 
     //function which sets information for the address which submitted the transaction.
-    function setUser() public {
+    function setUser(address newUser) public {
         bool zeroMatches = false;
 
-        if (allUsers[msg.sender].userAddress == address(0)) {
+        if (allUsers[newUser].userAddress == address(0)) {
             //new user so add to number of users
             numUsers++;
-            allUsersById.push(msg.sender);
+            allUsersById.push(newUser);
             zeroMatches = true;
         }
 
-        User storage user = allUsers[msg.sender];
-        user.userAddress = msg.sender;
+        User storage user = allUsers[newUser];
+        user.userAddress = newUser;
         if (zeroMatches == true) {
             user.allowedMatches = 0;
         }
@@ -199,14 +199,14 @@ contract RecordMatches is AccessControl {
             "The only true battle is against yourself, but can't count it here."
         );
 
-        require(
-            allUsers[_winner].userAddress != address(0),
-            "User is not yet registered"
-        );
-        require(
-            allUsers[_loser].userAddress != address(0),
-            "User is not yet registered"
-        );
+        if (allUsers[_winner].userAddress == address(0)) {
+            setUser(_winner);
+        }
+
+        if (allUsers[_loser].userAddress == address(0)) {
+            setUser(_loser);
+        }
+        
 
         //Decrement the referee's match allowance
         if (requireMembership == true) {
@@ -264,16 +264,13 @@ contract RecordMatches is AccessControl {
             "The only true battle is against yourself, but can't count it here."
         );
 
-        // Only allow overwriting within a certain time frame.
+        if (allUsers[_winner].userAddress == address(0)) {
+            setUser(_winner);
+        }
 
-        require(
-            allUsers[_winner].userAddress != address(0),
-            "Winning athlete is not yet registered"
-        );
-        require(
-            allUsers[_loser].userAddress != address(0),
-            "Losing athlete is not yet registered"
-        );
+        if (allUsers[_loser].userAddress == address(0)) {
+            setUser(_loser);
+        }
 
         // Overwrite the match.
         allMatches[id].winner = _winner;
@@ -323,6 +320,10 @@ contract RecordMatches is AccessControl {
         //Decrement the referee's match allowance
         if (requireMembership == true) {
             allUsers[msg.sender].allowedMatches -= 1;
+        }
+
+        if (allUsers[_athlete].userAddress == address(0)) {
+            setUser(_athlete);
         }
 
         // Create the proposed training
