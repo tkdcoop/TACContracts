@@ -107,9 +107,9 @@ contract RecordMatches is AccessControl {
 
     bool public requireMembership = true;
 
-    address public TACContract = 0xABa8ace37f301E7a3A3FaD44682C8Ec8DC2BD18A;
+    address public TACContract = 0xFa51B42d4C9EA35F1758828226AaEdBeC50DD54E;
     address public tACTreasuryContract =
-        0xCA4eb1B6922dEf07b7a6FADD9Ab1545B92Cf0be3;
+        0x1691D63825Bca3352f66F55EC616f6340BbD63e8;
 
     //The amount of Hwangs required to spar a match.
     uint public matchCost = 10000000000000000000;
