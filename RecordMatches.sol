@@ -342,7 +342,7 @@ contract RecordMatches is AccessControl {
         ITAC TAC = ITAC(TACContract);
 
         //Transfer 10 TAC from the athlete.
-        TAC.transferFrom(msg.sender, creatorAddress, matchCost);
+        TAC.transferFrom(_athlete, creatorAddress, matchCost);
 
         ITACTreasury TACTreasury = ITACTreasury(tACTreasuryContract);
 
